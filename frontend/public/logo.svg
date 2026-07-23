@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="48" viewBox="0 0 180 48">
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FF6B35"/>
+      <stop offset="100%" stop-color="#E85D26"/>
+    </linearGradient>
+  </defs>
+  <!-- Burger icon -->
+  <g transform="translate(4, 4)">
+    <!-- Top bun -->
+    <ellipse cx="20" cy="12" rx="18" ry="7" fill="#D9782B"/>
+    <!-- Patty -->
+    <rect x="4" y="14" width="32" height="7" rx="2" fill="#8B4513"/>
+    <!-- Cheese -->
+    <rect x="3" y="18" width="34" height="3" rx="1" fill="#FFD700"/>
+    <!-- Lettuce -->
+    <rect x="5" y="21" width="30" height="3" rx="1.5" fill="#4CAF50"/>
+    <!-- Bottom bun -->
+    <ellipse cx="20" cy="26" rx="16" ry="5" fill="#D9782B"/>
+    <!-- Steam -->
+    <path d="M13 5 Q14 1 13 -2" stroke="#bbb" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+    <path d="M20 4 Q21 0 20 -3" stroke="#bbb" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+    <path d="M27 5 Q28 1 27 -2" stroke="#bbb" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+  </g>
+  <!-- Food Dev text -->
+  <text x="50" y="30" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="800" fill="url(#grad)">Food</text>
+  <text x="100" y="30" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="400" fill="#555">Dev</text>
+  <!-- Small tagline -->
+  <text x="50" y="42" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#999" letter-spacing="1">FOOD DELIVERY</text>
+</svg>
