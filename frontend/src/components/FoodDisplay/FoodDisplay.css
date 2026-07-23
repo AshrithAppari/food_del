@@ -13,3 +13,14 @@
     gap: 30px;
     row-gap: 50px;
 }
+
+.food-display-empty{
+    text-align: center;
+    margin-top: 60px;
+    font-size: 18px;
+    color: #808080;
+    padding: 40px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    border: 1px dashed #e2e2e2;
+}

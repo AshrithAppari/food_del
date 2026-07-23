@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useRef, useEffect } from 'react'
 import './Navbar.css'
 import {assets} from '../../assets/assets'
 import {Link} from 'react-router-dom';
@@ -8,7 +8,24 @@ import { StoreContext } from '../../context/StoreContext';
 const Navbar = ({setShowLogin}) => {
 
     const [menu,Setmenu] = useState("home");
-    const{getTotalCartAmount} =useContext(StoreContext)
+    const [showSearch, setShowSearch] = useState(false);
+    const {getTotalCartAmount, searchQuery, setSearchQuery} = useContext(StoreContext);
+    const searchInputRef = useRef(null);
+
+    const handleSearchClick = () => {
+      setShowSearch(prev => {
+        if (prev) {
+          setSearchQuery("");
+        }
+        return !prev;
+      });
+    };
+
+    useEffect(() => {
+      if (showSearch && searchInputRef.current) {
+        searchInputRef.current.focus();
+      }
+    }, [showSearch]);
     
   return (
     <div className='navbar'>
@@ -20,7 +37,24 @@ const Navbar = ({setShowLogin}) => {
         <a href='#footer' onClick={()=>Setmenu("contact-us")} className={menu==="contact-us"?"active":""}>contact us</a>
       </ul>
       <div className='navbar-right'>
-        <img src={assets.search_icon} alt="" />
+        <div className='navbar-search-container'>
+          <img 
+            src={assets.search_icon} 
+            alt="Search" 
+            onClick={handleSearchClick}
+            className={showSearch ? 'search-icon-active' : ''}
+          />
+          {showSearch && (
+            <input
+              ref={searchInputRef}
+              type="text"
+              className="navbar-search-input"
+              placeholder="Search food..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          )}
+        </div>
         <div className='navbar-search-icon'>
           <Link to="/cart"><img src={assets.basket_icon} alt="" /></Link>
             <div className={getTotalCartAmount()===0?"":"dot"}></div>
