@@ -26,6 +26,12 @@ const Navbar = ({setShowLogin}) => {
         searchInputRef.current.focus();
       }
     }, [showSearch]);
+
+    const handleSearchBlur = () => {
+      if (!searchQuery) {
+        setShowSearch(false);
+      }
+    };
     
   return (
     <div className='navbar'>
@@ -37,40 +43,31 @@ const Navbar = ({setShowLogin}) => {
         <a href='#footer' onClick={()=>Setmenu("contact-us")} className={menu==="contact-us"?"active":""}>contact us</a>
       </ul>
       <div className='navbar-right'>
-        <div className='navbar-search-container'>
+        <div className={`navbar-search-container ${showSearch ? 'search-expanded' : ''}`}>
           <img 
             src={assets.search_icon} 
             alt="Search" 
             onClick={handleSearchClick}
             className={showSearch ? 'search-icon-active' : ''}
           />
-          {showSearch && (
-            <input
-              ref={searchInputRef}
-              type="text"
-              className="navbar-search-input"
-              placeholder="Search food..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          )}
+          <input
+            ref={searchInputRef}
+            type="text"
+            className={`navbar-search-input ${showSearch ? 'search-visible' : ''}`}
+            placeholder="Search food..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onBlur={handleSearchBlur}
+          />
         </div>
         <div className='navbar-search-icon'>
           <Link to="/cart"><img src={assets.basket_icon} alt="" /></Link>
             <div className={getTotalCartAmount()===0?"":"dot"}></div>
-            
-            </div>
-
-             <button onClick={()=>setShowLogin(true)}>sign in</button>
-
-
-
+        </div>
+        <button onClick={()=>setShowLogin(true)}>sign in</button>
       </div>
-
-
     </div> 
   )
 }
 
 export default Navbar
-
